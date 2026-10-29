@@ -10,6 +10,7 @@ layout: default
       image: hero.jpg      # a wide photo in assets/img/
       position: center     # optional: which part of the photo to keep in view (e.g. "center top", "30% 60%")
       darken: 0.35         # optional: 0 = no shading, 0.6 = strong shading behind the text
+      link_color: "#c084fc" # optional: color of links in the subtitle (default: purple)
 
   Everything else in the front matter (subtitle, profile, news, latest_posts,
   selected_papers, social) works exactly as it does with the normal `about` layout.
@@ -25,11 +26,12 @@ layout: default
 {%- assign hero_image = page.hero.image | default: 'hero.jpg' | prepend: '/assets/img/' | relative_url -%}
 {%- assign hero_position = page.hero.position | default: 'center' -%}
 {%- assign hero_darken = page.hero.darken | default: 0.35 -%}
+{%- assign hero_link_color = page.hero.link_color | default: '#c084fc' -%}
 
 <div class="hero-page">
   <section
     class="hero"
-    style="--hero-image: url('{{ hero_image }}'); --hero-position: {{ hero_position }}; --hero-darken: {{ hero_darken }};"
+    style="--hero-image: url('{{ hero_image }}'); --hero-position: {{ hero_position }}; --hero-darken: {{ hero_darken }}; --hero-link-color: {{ hero_link_color }};"
   >
     <div class="hero-text">
       <h1 class="hero-title">{{ hero_name }}</h1>
@@ -146,13 +148,17 @@ layout: default
     margin: 0 0 1rem;
     text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
   }
-  .hero-subtitle {
+  .hero .hero-subtitle {
+    color: #fff !important;
     font-size: clamp(1rem, 2vw, 1.3rem);
-    opacity: 0.92;
     margin: 0;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
   }
-  .hero-subtitle a {
-    color: #fff;
+  .hero .hero-subtitle a {
+    color: var(--hero-link-color) !important;
+    text-decoration: none;
+  }
+  .hero .hero-subtitle a:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
   }
@@ -273,6 +279,16 @@ layout: default
     }
     setOffset();
     window.addEventListener('resize', setOffset);
+    window.addEventListener('load', setOffset);
+    // The navbar can change height once web fonts load; keep the photo flush with the top.
+    if ('ResizeObserver' in window && document.getElementById('navbar')) {
+      new ResizeObserver(function () {
+        requestAnimationFrame(setOffset);
+      }).observe(document.getElementById('navbar'));
+    }
+    if ('MutationObserver' in window) {
+      new MutationObserver(setOffset).observe(document.body, { attributes: true, attributeFilter: ['style', 'class'] });
+    }
 
     // See-through navbar while the photo is on screen.
     var nav = document.getElementById('navbar');

@@ -1,0 +1,16 @@
+// Your own style tweaks. Loaded last, so anything here wins over the theme.
+
+// Body text: slightly larger with roomier line spacing (theme default: 16px, 1.5).
+body {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+// Address block under the profile photo: one entry per line.
+.profile .more-info {
+  line-height: 1.5;
+
+  p {
+    display: block;
+  }
+}
