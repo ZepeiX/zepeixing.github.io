@@ -16,7 +16,7 @@ profile:
   more_info: >
     <p>7203</p>
     <p>1800 Sherman Ave</p>
-    <p>Evanston, Chicago, Illinois</p>
+    <p>Evanston, Chicago, IL</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
