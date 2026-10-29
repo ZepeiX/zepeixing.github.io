@@ -15,9 +15,9 @@ body {
   }
 }
 
-// Contact icons at the bottom of the homepage: much smaller than the theme's 4rem.
+// Contact icons at the bottom of the homepage (theme default: 4rem).
 .social .contact-icons {
-  font-size: 1.6rem;
+  font-size: 1.25rem;
 
   a {
     margin: 0 0.5rem;
