@@ -1,0 +1,305 @@
+---
+layout: default
+---
+{% comment %}
+  Full-screen photo landing page for al-folio.
+
+  Use it from _pages/about.md by setting `layout: about-hero` and adding:
+
+    hero:
+      image: hero.jpg      # a wide photo in assets/img/
+      position: center     # optional: which part of the photo to keep in view (e.g. "center top", "30% 60%")
+      darken: 0.35         # optional: 0 = no shading, 0.6 = strong shading behind the text
+
+  Everything else in the front matter (subtitle, profile, news, latest_posts,
+  selected_papers, social) works exactly as it does with the normal `about` layout.
+{% endcomment %}
+
+{%- capture hero_name -%}
+  {%- if site.title == 'blank' -%}
+    <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}
+  {%- else -%}
+    {{ site.title }}
+  {%- endif -%}
+{%- endcapture -%}
+{%- assign hero_image = page.hero.image | default: 'hero.jpg' | prepend: '/assets/img/' | relative_url -%}
+{%- assign hero_position = page.hero.position | default: 'center' -%}
+{%- assign hero_darken = page.hero.darken | default: 0.35 -%}
+
+<div class="hero-page">
+  <section
+    class="hero"
+    style="--hero-image: url('{{ hero_image }}'); --hero-position: {{ hero_position }}; --hero-darken: {{ hero_darken }};"
+  >
+    <div class="hero-text">
+      <h1 class="hero-title">{{ hero_name }}</h1>
+      {% if page.subtitle %}
+        <p class="hero-subtitle">{{ page.subtitle }}</p>
+      {% endif %}
+    </div>
+    <a class="hero-scroll" href="#about-content" aria-label="Scroll down">
+      <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+        <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+  </section>
+
+  <div id="about-content" class="hero-sheet">
+    <div class="post">
+      <article>
+        {% if page.profile %}
+          <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %} hero-reveal">
+            {% if page.profile.image %}
+              {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+              {% if page.profile.image_circular %}
+                {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+              {% else %}
+                {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
+              {% endif %}
+              {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
+              {%
+                include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+                cache_bust=true
+              %}
+            {% endif %}
+            {% if page.profile.more_info %}
+              <div class="more-info">{{ page.profile.more_info }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div class="clearfix hero-reveal">{{ content }}</div>
+
+        {% if page.announcements and page.announcements.enabled %}
+          <section class="hero-reveal">
+            <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a></h2>
+            {% include news.liquid limit=true %}
+          </section>
+        {% endif %}
+
+        {% if page.latest_posts and page.latest_posts.enabled %}
+          <section class="hero-reveal">
+            <h2><a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a></h2>
+            {% include latest_posts.liquid %}
+          </section>
+        {% endif %}
+
+        {% if page.selected_papers %}
+          <section class="hero-reveal">
+            <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a></h2>
+            {% include selected_papers.liquid %}
+          </section>
+        {% endif %}
+
+        {% if page.social %}
+          <div class="social hero-reveal">
+            <div class="contact-icons">{% social_links %}</div>
+            <div class="contact-note">{{ site.contact_note }}</div>
+          </div>
+        {% endif %}
+      </article>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Pull the photo up under the navbar and out to the full window width. */
+  .hero-page {
+    margin-top: calc(-1 * var(--hero-offset, 105px));
+  }
+  .hero {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    height: 100vh;
+    height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    background:
+      linear-gradient(
+        rgba(0, 0, 0, calc(var(--hero-darken) + 0.15)),
+        rgba(0, 0, 0, var(--hero-darken)) 30%,
+        rgba(0, 0, 0, var(--hero-darken)) 70%,
+        rgba(0, 0, 0, calc(var(--hero-darken) + 0.2))
+      ),
+      var(--hero-image) var(--hero-position) / cover no-repeat;
+  }
+  .hero-text {
+    padding: 0 1.5rem;
+    max-width: 52rem;
+    animation: hero-in 1.1s ease-out both;
+  }
+  .hero-title,
+  .hero-title * {
+    color: #fff !important;
+  }
+  .hero-title {
+    font-size: clamp(2.6rem, 7vw, 5.5rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0 0 1rem;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+  }
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    opacity: 0.92;
+    margin: 0;
+  }
+  .hero-subtitle a {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    opacity: 0.85;
+    animation: hero-bob 2.2s ease-in-out infinite;
+  }
+  .hero-scroll:hover {
+    color: #fff;
+    opacity: 1;
+  }
+
+  /* The content slides up over the photo like a sheet of paper. */
+  .hero-sheet {
+    position: relative;
+    z-index: 1;
+    padding-top: 4rem;
+  }
+  .hero-sheet::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(50% - 50vw);
+    right: calc(50% - 50vw);
+    z-index: -1;
+    background: var(--global-bg-color);
+    box-shadow: 0 -24px 48px rgba(0, 0, 0, 0.25);
+  }
+  body:has(.hero-page) {
+    overflow-x: clip;
+  }
+
+  /* Sections fade up as they scroll into view (only when JavaScript runs). */
+  .hero-js .hero-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.8s ease,
+      transform 0.8s ease;
+  }
+  .hero-js .hero-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* While the photo fills the screen, the navbar goes see-through and the fixed footer steps aside. */
+  #navbar,
+  footer.fixed-bottom {
+    transition:
+      background-color 0.35s ease,
+      box-shadow 0.35s ease,
+      transform 0.35s ease;
+  }
+  @media (min-width: 576px) {
+    body.hero-at-top #navbar {
+      background-color: transparent !important;
+      box-shadow: none !important;
+      border-bottom-color: transparent !important;
+    }
+    body.hero-at-top #navbar .nav-link,
+    body.hero-at-top #navbar .navbar-brand,
+    body.hero-at-top #navbar button,
+    body.hero-at-top #navbar i,
+    body.hero-at-top #navbar svg {
+      color: #fff !important;
+    }
+    body.hero-at-top #search-toggle,
+    body.hero-at-top #light-toggle {
+      filter: brightness(0) invert(1);
+    }
+  }
+  body.hero-at-top footer.fixed-bottom {
+    transform: translateY(100%);
+  }
+
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
+  @keyframes hero-bob {
+    50% {
+      transform: translate(-50%, 8px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-text,
+    .hero-scroll {
+      animation: none;
+    }
+    .hero-js .hero-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var page = document.querySelector('.hero-page');
+    var main = document.querySelector('[role="main"]');
+    var hero = document.querySelector('.hero');
+    if (!page || !main || !hero) return;
+
+    // How far the page content starts below the top of the window (navbar + spacing).
+    function setOffset() {
+      var top = parseFloat(getComputedStyle(document.body).paddingTop) || 0;
+      top += parseFloat(getComputedStyle(main).marginTop) || 0;
+      page.style.setProperty('--hero-offset', top + 'px');
+    }
+    setOffset();
+    window.addEventListener('resize', setOffset);
+
+    // See-through navbar while the photo is on screen.
+    var nav = document.getElementById('navbar');
+    function onScroll() {
+      var navHeight = nav ? nav.offsetHeight : 60;
+      document.body.classList.toggle('hero-at-top', window.scrollY < hero.offsetHeight - navHeight);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Fade sections in as they arrive.
+    if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('hero-js');
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { rootMargin: '0px 0px -8% 0px' }
+      );
+      document.querySelectorAll('.hero-reveal').forEach(function (el) {
+        io.observe(el);
+      });
+    }
+  })();
+</script>

@@ -1,5 +1,9 @@
 ---
-layout: about
+layout: about-hero
+hero:
+  image: 5.jpg # full-screen photo in assets/img/ (swap in your own wide photo)
+  position: center # which part of the photo stays in view, e.g. "center top"
+  darken: 0.35 # 0 = no shading, 0.6 = stronger shading behind your name
 title: about
 permalink: /
 subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
@@ -27,6 +31,6 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a theoretical astrophysics. 
+I am a theoretical astrophysics.
 
 Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
