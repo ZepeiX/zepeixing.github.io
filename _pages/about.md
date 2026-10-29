@@ -6,16 +6,16 @@ hero:
   darken: 0.35 # 0 = no shading, 0.6 = stronger shading behind your name
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Postdoctoral researcher <a href='https://ciera.northwestern.edu'>CIERA</a>. Northwestern University, USA.
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>7203</p>
+    <p>1800 Sherman Ave</p>
+    <p>Evanston, Chicago, Illinois</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
