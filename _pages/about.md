@@ -7,7 +7,7 @@ hero:
   blur: 6 # blur the photo, in pixels (0 = sharp, 10 = very soft)
 title: about
 permalink: /
-subtitle: Postdoctoral researcher <a href='https://ciera.northwestern.edu'>CIERA</a>. Northwestern University, USA.
+subtitle: Postdoctoral researcher <a href='https://ciera.northwestern.edu'>CIERA</a>, Northwestern University.
 
 profile:
   align: right
@@ -32,4 +32,5 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a theoretical astrophysicist studying stellar and binary evolution, with a particular interest in the physics of mass transfer. My work explores a range of binary populations, including X-ray binaries, gravitational-wave sources, subdwarf+Be binaries, and Wolf-Rayet+O binaries. I was a core developer of the population synthesis code [POSYDON](https://posydon.org) and I use [MESA](https://docs.mesastar.org/en/latest/index.html) to investigate how mass transfer shapes the evolution of binary systems.
+<p>I am a theoretical astrophysicist studying stellar and binary evolution, with a particular interest in the physics of mass transfer.</p> 
+My work explores a range of binary populations, including X-ray binaries, gravitational-wave sources, subdwarf+Be binaries, and Wolf-Rayet+O binaries. I was a core developer of the population synthesis code [POSYDON](https://posydon.org) and I use [MESA](https://docs.mesastar.org/en/latest/index.html) to investigate how mass transfer shapes the evolution of binary systems.
