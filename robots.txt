@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://zepeixing.github.io/al-folio/sitemap.xml
+Sitemap: https://zepeixing.github.io/zepeixing.github.io/sitemap.xml
