@@ -4,6 +4,7 @@ hero:
   image: hero.png # full-screen photo in assets/img/
   position: center # which part of the photo stays in view, e.g. "center top"
   darken: 0.35 # 0 = no shading, 0.6 = stronger shading behind your name
+  blur: 6 # blur the photo, in pixels (0 = sharp, 10 = very soft)
 title: about
 permalink: /
 subtitle: Postdoctoral researcher <a href='https://ciera.northwestern.edu'>CIERA</a>. Northwestern University, USA.
