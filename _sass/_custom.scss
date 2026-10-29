@@ -23,3 +23,76 @@ body {
     margin: 0 0.5rem;
   }
 }
+
+// Binary-star cartoon under the introduction (_includes/binaries-cartoon.html).
+.binaries-cartoon {
+  --bc-h: #f2994a; // hydrogen-rich star: orange
+  --bc-s: #8ecbff; // stripped star: light blue
+  display: flow-root; // sits beside the floated profile photo instead of under it
+  margin: 1.5rem 0 0.5rem;
+  color: var(--global-text-color);
+
+  svg {
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    overflow: visible;
+  }
+  .bc-h {
+    fill: var(--bc-h);
+  }
+  .bc-s {
+    fill: var(--bc-s);
+  }
+  .bc-orbit,
+  .bc-arrows {
+    opacity: 0.45;
+  }
+  .bc-stream {
+    fill: none;
+    stroke: var(--bc-h);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  .bc-disk {
+    fill: none;
+    stroke: var(--bc-h);
+    stroke-width: 3;
+    opacity: 0.55;
+  }
+  .bc-disk-front {
+    opacity: 0.9;
+  }
+  .bc-wind {
+    stroke: var(--bc-s);
+  }
+  .bc-shock {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-dasharray: 3 4;
+    stroke-linecap: round;
+    opacity: 0.4;
+  }
+  .bc-labels text {
+    fill: currentColor;
+    font-size: 13px;
+    opacity: 0.85;
+  }
+  .bc-legend text {
+    fill: currentColor;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  // On phones the drawing is scaled down, so enlarge the text to stay readable.
+  @media (max-width: 576px) {
+    .bc-labels text {
+      font-size: 18px;
+    }
+    .bc-legend text {
+      font-size: 17px;
+    }
+  }
+}

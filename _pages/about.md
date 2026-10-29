@@ -4,7 +4,7 @@ hero:
   image: hero.png # full-screen photo in assets/img/
   position: center # which part of the photo stays in view, e.g. "center top"
   darken: 0.35 # 0 = no shading, 0.6 = stronger shading behind your name
-  blur: 6 # blur the photo, in pixels (0 = sharp, 10 = very soft)
+  blur: 3 # blur the photo, in pixels (0 = sharp, 10 = very soft)
 title: about
 permalink: /
 subtitle: Postdoctoral researcher <a href='https://ciera.northwestern.edu'>CIERA</a>, Northwestern University.
@@ -34,3 +34,5 @@ latest_posts:
 
 <p>I am a theoretical astrophysicist studying stellar and binary evolution, with a particular interest in the physics of mass transfer.</p> 
 My work explores a range of binary populations, including X-ray binaries, gravitational-wave sources, subdwarf+Be binaries, and Wolf-Rayet+O binaries. I was a core developer of the population synthesis code [POSYDON](https://posydon.org) and I use [MESA](https://docs.mesastar.org/en/latest/index.html) to investigate how mass transfer shapes the evolution of binary systems.
+
+{% include binaries-cartoon.html %}

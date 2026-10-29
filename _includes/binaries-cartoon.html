@@ -1,0 +1,75 @@
+<figure class="binaries-cartoon">
+  <svg viewBox="0 0 640 210" role="img" aria-labelledby="binaries-cartoon-title" xmlns="http://www.w3.org/2000/svg">
+    <title id="binaries-cartoon-title">
+      Cartoon of binary evolution: two hydrogen-rich stars, mass transfer, a stripped star with a Be star, and a Wolf-Rayet star with an O star
+    </title>
+    <defs>
+      <marker id="bc-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M1 1 L9 5 L1 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+      </marker>
+    </defs>
+
+    <g class="bc-orbit" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+      <!-- 1: two hydrogen-rich stars -->
+      <path d="M71.7 60.5 A48 30 0 0 1 127.3 84.8" />
+      <path d="M88.3 119.5 A48 30 0 0 1 32.7 95.2" />
+      <!-- 2: mass transfer -->
+      <path d="M236 58.5 A52 32 0 0 1 296.2 84.4" />
+      <path d="M254 121.5 A52 32 0 0 1 193.8 95.6" />
+      <!-- 3: stripped star + Be star -->
+      <path d="M393.3 60.5 A50 30 0 0 1 451.2 84.8" />
+      <path d="M410.7 119.5 A50 30 0 0 1 352.8 95.2" />
+      <!-- 4: Wolf-Rayet + O star -->
+      <path d="M553 58.5 A52 32 0 0 1 613.2 84.4" />
+      <path d="M571 121.5 A52 32 0 0 1 510.8 95.6" />
+    </g>
+
+    <g class="bc-arrows" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" marker-end="url(#bc-arrow)">
+      <path d="M138 90 H180" />
+      <path d="M304 90 H342" />
+      <path d="M460 90 H500" />
+    </g>
+
+    <!-- 1: two hydrogen-rich stars -->
+    <circle class="bc-h" cx="62" cy="90" r="22" />
+    <circle class="bc-h" cx="104" cy="90" r="15" />
+
+    <!-- 2: Roche-lobe overflow onto the companion -->
+    <path class="bc-h" d="M248 90 C240 84 236 70 222 68 A22 22 0 0 0 222 112 C236 110 240 96 248 90 Z" />
+    <path class="bc-stream" d="M247 90 Q256 91 262 97" />
+    <circle class="bc-h" cx="272" cy="90" r="12" />
+    <ellipse class="bc-disk" cx="272" cy="90" rx="19" ry="4.5" />
+
+    <!-- 3: stripped star + Be star with its disk -->
+    <path class="bc-disk" d="M390 90 A28 6 0 0 1 446 90" />
+    <circle class="bc-h" cx="418" cy="90" r="17" />
+    <path class="bc-disk bc-disk-front" d="M390 90 A28 6 0 0 0 446 90" />
+    <circle class="bc-s" cx="373" cy="88" r="8" />
+
+    <!-- 4: Wolf-Rayet (stripped) star with a strong wind + O star -->
+    <g class="bc-wind" fill="none" stroke-width="2.2" stroke-linecap="round">
+      <path d="M540 75 V67" />
+      <path d="M529.4 79.4 L524.4 74.4" />
+      <path d="M525 90 H517" />
+      <path d="M529.4 100.6 L524.4 105.6" />
+      <path d="M540 105 V113" />
+    </g>
+    <path class="bc-shock" d="M565 72 Q556 90 565 108" />
+    <circle class="bc-s" cx="540" cy="90" r="11" />
+    <circle class="bc-h" cx="585" cy="90" r="18" />
+
+    <g class="bc-labels" text-anchor="middle">
+      <text x="80" y="160">Two H-rich stars</text>
+      <text x="245" y="160">Mass transfer</text>
+      <text x="402" y="160">Stripped star + Be</text>
+      <text x="562" y="160">Wolf-Rayet + O</text>
+    </g>
+
+    <g class="bc-legend">
+      <circle class="bc-h" cx="190" cy="194" r="6" />
+      <text x="201" y="198.5">hydrogen-rich star</text>
+      <circle class="bc-s" cx="372" cy="194" r="6" />
+      <text x="383" y="198.5">stripped star</text>
+    </g>
+  </svg>
+</figure>
