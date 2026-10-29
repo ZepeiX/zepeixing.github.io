@@ -31,6 +31,4 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a theoretical astrophysics.
-
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+I am a theoretical astrophysicist studying stellar and binary evolution, with a particular interest in the physics of mass transfer. My work explores a range of binary populations, including X-ray binaries, gravitational-wave sources, subdwarf+Be binaries, and Wolf-Rayet+O binaries. I was a core developer of the population synthesis code [POSYDON](https://posydon.org) and I use [MESA](https://docs.mesastar.org/en/latest/index.html) to investigate how mass transfer shapes the evolution of binary systems.
