@@ -92,3 +92,23 @@ We follow merging neutron star–black hole binaries at solar metallicity from t
 
 </div>
 </div>
+
+<script>
+  // Show the plots in each .project-slides frame one at a time, 2 seconds each.
+  // One timer per frame, so exactly one plot is visible at any moment.
+  (function () {
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.querySelectorAll(".project-slides").forEach(function (frame) {
+      var imgs = frame.querySelectorAll("img");
+      if (imgs.length < 2 || reduce) return;
+      var i = 0;
+      imgs[0].classList.add("is-active");
+      frame.classList.add("is-running");
+      setInterval(function () {
+        imgs[i].classList.remove("is-active");
+        i = (i + 1) % imgs.length;
+        imgs[i].classList.add("is-active");
+      }, 2000);
+    });
+  })();
+</script>

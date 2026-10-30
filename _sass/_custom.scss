@@ -235,8 +235,10 @@ html[data-theme="dark"] .binaries-cartoon {
   }
 }
 
-// Two plots that swap every 2 seconds in the same frame (first project on the projects page).
-// The images are pre-aligned so their axes coincide; only the data points change.
+// Plots that take turns in the same frame on the projects page (2 s each).
+// A small script on the page marks exactly one image as active at a time, so the
+// frame can never end up empty; without the script, the first plot just stays visible.
+// The images are pre-aligned so their axes coincide and only the data change.
 .project-slides {
   position: relative;
   aspect-ratio: 900 / 720;
@@ -250,58 +252,19 @@ html[data-theme="dark"] .binaries-cartoon {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    animation: project-swap 4s infinite;
-  }
-  img:nth-child(2) {
-    animation-delay: -2s;
-  }
-}
-@keyframes project-swap {
-  0%,
-  45% {
-    opacity: 1;
-  }
-  50%,
-  95% {
     opacity: 0;
+    transition: opacity 0.3s ease;
   }
-  100% {
+  &:not(.is-running) img:first-child,
+  img.is-active {
     opacity: 1;
   }
 }
-// Three plots, each shown for 2 seconds in turn (second project).
 .project-slides--3 {
   aspect-ratio: 760 / 942;
-
-  img {
-    animation-name: project-swap-3;
-    animation-duration: 6s;
-  }
-  img:nth-child(2) {
-    animation-delay: -4s;
-  }
-  img:nth-child(3) {
-    animation-delay: -2s;
-  }
-}
-@keyframes project-swap-3 {
-  0%,
-  30% {
-    opacity: 1;
-  }
-  33.4%,
-  97% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   .project-slides img {
-    animation: none;
-  }
-  .project-slides img:not(:first-child) {
-    opacity: 0;
+    transition: none;
   }
 }
