@@ -1,14 +1,8 @@
 name: Render a CV
+# Only runs when started by hand (Actions tab -> "Render a CV" -> Run workflow).
+# It no longer runs on every change to _data/cv.yml: the website's CV data uses
+# fields that RenderCV's stricter format rejects, and a separate PDF CV is used.
 on:
-  push:
-    branches:
-      - main
-      - master
-    paths:
-      - "_data/cv.yml"
-      - "assets/rendercv/design.yaml"
-      - "assets/rendercv/locale.yaml"
-      - "assets/rendercv/settings.yaml"
   workflow_call:
   workflow_dispatch:
 permissions:
