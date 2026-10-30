@@ -269,11 +269,39 @@ html[data-theme="dark"] .binaries-cartoon {
     opacity: 1;
   }
 }
+// Three plots, each shown for 2 seconds in turn (second project).
+.project-slides--3 {
+  aspect-ratio: 760 / 942;
+
+  img {
+    animation-name: project-swap-3;
+    animation-duration: 6s;
+  }
+  img:nth-child(2) {
+    animation-delay: -4s;
+  }
+  img:nth-child(3) {
+    animation-delay: -2s;
+  }
+}
+@keyframes project-swap-3 {
+  0%,
+  30% {
+    opacity: 1;
+  }
+  33.4%,
+  97% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .project-slides img {
     animation: none;
   }
-  .project-slides img:nth-child(2) {
+  .project-slides img:not(:first-child) {
     opacity: 0;
   }
 }

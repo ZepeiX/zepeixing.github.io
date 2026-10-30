@@ -31,7 +31,11 @@ When one star in a binary transfers mass to its companion, the companion spins u
 
 <div class="project-block" markdown="1">
 <div class="project-figure">
-{% include projects/fig-mass-gap.html %}
+<div class="project-slides project-slides--3" role="img" aria-label="Black hole mass distributions and neutron star versus black hole mass for three common-envelope assumptions, compared with LIGO-Virgo-KAGRA">
+  <img src="{{ '/assets/img/projects/nsbh-mass-gap-1.png' | relative_url }}" alt="" width="760" height="942">
+  <img src="{{ '/assets/img/projects/nsbh-mass-gap-2.png' | relative_url }}" alt="" width="760" height="942">
+  <img src="{{ '/assets/img/projects/nsbh-mass-gap-3.png' | relative_url }}" alt="" width="760" height="942">
+</div>
 </div>
 <div class="project-text" markdown="1">
 
